@@ -1,0 +1,269 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #3399ff; /* A nice blue for accents */
+    --dark-bg: #121212;
+    --dark-surface: #1e1e1e;
+    --text-light: #ffffff;
+    --text-secondary: #aaaaaa;
+}
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    margin-bottom: 1rem;
+}
+
+/* --- Header / Navigation Bar --- */
+#main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 20px 0;
+    transition: background-color 0.4s ease, padding 0.4s ease;
+}
+
+#main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-light);
+    text-decoration: none;
+}
+
+#main-header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+#main-header nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+#main-header nav a:hover {
+    color: var(--primary-color);
+}
+
+/* Scrolled state for the header */
+#main-header.scrolled {
+    background-color: var(--dark-surface);
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+/* --- Hero Section --- */
+#hero {
+    height: 100vh; /* Full screen height */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--text-light);
+    background-image: url('https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+}
+
+/* The blinking cursor for the typing effect */
+.typed-cursor {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+/* --- Main Content Sections --- */
+#main-content section {
+    padding: 60px 0;
+    border-bottom: 1px solid var(--dark-surface);
+}
+
+#main-content h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: var(--dark-surface);
+}
+
+/* --- General Button Styles (we'll need these for the cards) --- */
+.btn, .btn-project {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover, .btn-project:hover {
+    background-color: #2b88e5; /* A slightly darker blue */
+    transform: translateY(-2px);
+}
+
+
+/* --- About Section --- */
+.about-content p {
+    max-width: 800px; /* Prevents lines from getting too long */
+    margin: 0 auto;   /* Centers the paragraph block */
+    line-height: 1.8;  /* Increases space between lines for readability */
+    font-size: 1.1rem;
+    text-align: center; /* Center aligns the text */
+    color: var(--text-secondary);
+}
+
+
+/* --- Projects Section --- */
+.project-grid {
+    display: grid;
+    /* This creates a responsive grid. It will fit as many 320px columns as it can */
+    /* and then stretch them to be equal. */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px; /* Space between the cards */
+}
+
+.project-card {
+    background-color: var(--dark-surface);
+    border-radius: 8px;
+    overflow: hidden; /* Ensures the image corners are rounded */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Stacks image and info vertically */
+}
+
+.project-card:hover {
+    transform: translateY(-5px); /* Lifts the card up slightly on hover */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.project-card img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+}
+
+.project-info {
+    padding: 20px;
+    flex-grow: 1; /* Allows this section to grow, pushing the button to the bottom */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-info h3 {
+    color: var(--primary-color);
+}
+
+.project-info p {
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    flex-grow: 1; /* Pushes the button down by taking up available space */
+}
+
+.btn-project {
+    align-self: flex-start; /* Aligns the button to the left */
+}
+#contact {
+    text-align: center;
+}
+
+#contact p {
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.social-links a {
+    background-color: var(--dark-surface);
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+.social-links i {
+    font-size: 1.5rem;
+    margin-right: 12px;
+}
